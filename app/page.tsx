@@ -21,7 +21,18 @@ const links = [
   },
 ];
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  stack: string[];
+  type: string;
+  href?: string;
+  image?: string;
+  imageAlt?: string;
+  linkLabel?: string;
+};
+
+const projects: Project[] = [
   {
     title: "Burdines Waterfront Website",
     description:
@@ -202,8 +213,8 @@ export default function Home() {
               </p>
             </div>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-700">
-              I'm a Computer Science and Mathematics double major who enjoys problem solving and building things with technology.
-              Take a look at some of the things I've built, as well as the college classes that have shaped my learning.
+              I&apos;m a Computer Science and Mathematics double major who enjoys problem solving and building things with technology.
+              Take a look at some of the things I&apos;ve built, as well as the college classes that have shaped my learning.
             </p>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-700">
               Feel free to reach out!
@@ -271,10 +282,10 @@ export default function Home() {
                 className="flex min-h-[260px] flex-col overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-zinc-900/8"
                 key={project.title}
               >
-                {"image" in project ? (
+                {project.image ? (
                   <div className="relative aspect-[16/10] w-full border-b border-zinc-900/10 bg-zinc-100">
                     <Image
-                      alt={project.imageAlt}
+                      alt={project.imageAlt ?? `${project.title} screenshot`}
                       className="object-cover object-top"
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
@@ -300,14 +311,14 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="mt-6 flex items-center justify-between gap-4">
-                    {"href" in project ? (
+                    {project.href ? (
                       <a
                         className="inline-flex text-sm font-semibold text-teal-800 transition hover:text-teal-950"
                         href={project.href}
                         rel="noreferrer"
                         target="_blank"
                       >
-                        {project.linkLabel}
+                        {project.linkLabel ?? "View project"}
                       </a>
                     ) : (
                       <span />
