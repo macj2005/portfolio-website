@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const links = [
   {
@@ -33,6 +34,17 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    title: "Parallel Integration Engine",
+    description:
+      "Built a distributed mathematical computing platform in Rust that queues, partitions, and processes computationally intensive jobs across asynchronous workers.",
+    stack: ["Rust", "PostgreSQL", "AWS SQS"],
+    href: "/pie",
+    image: "/pie.png",
+    imageAlt: "Parallel Integration Engine application interface",
+    linkLabel: "View project",
+    type: "Personal",
+  },
   {
     title: "Burdines Waterfront Website",
     description:
@@ -312,14 +324,23 @@ export default function Home() {
                   </div>
                   <div className="mt-6 flex items-center justify-between gap-4">
                     {project.href ? (
-                      <a
-                        className="inline-flex text-sm font-semibold text-teal-800 transition hover:text-teal-950"
-                        href={project.href}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        {project.linkLabel ?? "View project"}
-                      </a>
+                      project.href.startsWith("/") ? (
+                        <Link
+                          className="inline-flex text-sm font-semibold text-teal-800 transition hover:text-teal-950"
+                          href={project.href}
+                        >
+                          {project.linkLabel ?? "View project"}
+                        </Link>
+                      ) : (
+                        <a
+                          className="inline-flex text-sm font-semibold text-teal-800 transition hover:text-teal-950"
+                          href={project.href}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          {project.linkLabel ?? "View project"}
+                        </a>
+                      )
                     ) : (
                       <span />
                     )}
