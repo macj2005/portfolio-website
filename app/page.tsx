@@ -68,11 +68,22 @@ const projects: Project[] = [
     type: "Personal",
   },
   {
-    title: "TCP from scratch",
+    title: "TCP From Scratch",
     description:
       "Developed TCP from the ground up in Rust, using concurrent programming techniques and a sliding window algorithm to create reliable data transfer.",
-    stack: ["Rust", "APIs", "TCP", "Serialization"],
+    stack: ["Rust", "Tokio", "TCP", "Serialization"],
     type: "Class work",
+    linkLabel: "Visit repo",
+    href: "https://github.com/macj2005/tcp-from-scratch",
+  },
+  {
+    title: "Matrix-Mult Problem",
+    description:
+      "Wrote an algorithm in C++ that finds the ideal multiplication of a given set of matrices in order to optimize computing time.",
+    stack: ["C++", "Matrices", "Algorithm Analysis"],
+    type: "Class work",
+    linkLabel: "Visit repo",
+    href: "https://github.com/macj2005/Matrix-Mult-Problem",
   },
 ];
 
